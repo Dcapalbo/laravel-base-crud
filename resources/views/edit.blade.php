@@ -10,10 +10,11 @@
     <title>laravel-base-crud</title>
   </head>
   <body>
-    <form action="{{route('books.destroy', $book->$id)}}" method="POST">
-      @method('DELETE')
+    <form action="{{route('books.update', $book->$id)}}" method="POST">
       @csrf
-      <input name="_method" type="hidden" value="POST">
+      @method('PUT')
+
+
       <div class="">
         <label for="isbn">ISBN</label>
         <input type="number" name="isbn" placeholder="ISBN" id="isbn" value="{{$book->isbn}}">
@@ -47,6 +48,12 @@
         <input type="date" name="date" placeholder="date" id="year" value="{{$book->year}}">
       </div>
       <input type="submit" value="Save">
+    </form>
+    <form action="{{route("books.destroy", $book->id)}}" method="POST">
+      @csrf
+      @method("DELETE")
+
+      <input type="submit" value="delete">
     </form>
   </body>
 </html>
