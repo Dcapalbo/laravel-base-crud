@@ -15,6 +15,10 @@
       @method('POST')
       <input name="_method" type="hidden" value="POST">
       <div class="">
+        <label for="isbn">ISBN</label>
+        <input type="number" name="isbn" placeholder="ISBN" id="isbn">
+      </div>
+      <div class="">
         <label for="title">Title</label>
         <input type="text" name="title" placeholder="title" id="title">
       </div>
@@ -40,7 +44,7 @@
       </div>
       <div class="">
         <label for="year">Date</label>
-        <input type="date" name="date" placeholder="date" id="year">
+        <input type="date" name="year" placeholder="date" id="year">
       </div>
       <input type="submit" value="Save">
     </form>

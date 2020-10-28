@@ -15,32 +15,36 @@
       @csrf
       <input name="_method" type="hidden" value="POST">
       <div class="">
+        <label for="isbn">ISBN</label>
+        <input type="number" name="isbn" placeholder="ISBN" id="isbn" value="{{$book->isbn}}">
+      </div>
+      <div class="">
         <label for="title">Title</label>
-        <input type="text" name="title" placeholder="title" id="title" value="{{$books->title}}">
+        <input type="text" name="title" placeholder="title" id="title" value="{{$book->title}}">
       </div>
       <div class="">
         <label for="author">Author</label>
-        <input type="text" name="author" placeholder="author" id="author" value="{{$books->author}}">
+        <input type="text" name="author" placeholder="author" id="author" value="{{$book->author}}">
       </div>
       <div class="">
         <label for="genre">Genre</label>
-        <input type="text" name="genre" placeholder="genre" id="genre" value="{{$books->genre}}">
+        <input type="text" name="genre" placeholder="genre" id="genre" value="{{$book->genre}}">
       </div>
       <div class="">
         <label for="edition">Editor</label>
-        <input type="text" name="edition" placeholder="edition" id="edition" value="{{$books->edition}}">
+        <input type="text" name="edition" placeholder="edition" id="edition" value="{{$book->edition}}">
       </div>
       <div class="">
         <label for="description">Description</label>
-        <input type="text" name="description" placeholder="description" id="description" value="{{$books->description}}">
+        <input type="text" name="description" placeholder="description" id="description" value="{{$book->description}}">
       </div>
       <div class="">
         <label for="pages">Pages</label>
-        <input type="number" name="pages" placeholder="number of pages" id="pages" value="{{$books->pages}}">
+        <input type="number" name="pages" placeholder="number of pages" id="pages" value="{{$book->pages}}">
       </div>
       <div class="">
         <label for="year">Date</label>
-        <input type="date" name="date" placeholder="date" id="year" value="{{$books->year}}">
+        <input type="date" name="date" placeholder="date" id="year" value="{{$book->year}}">
       </div>
       <input type="submit" value="Save">
     </form>

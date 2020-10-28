@@ -12,6 +12,7 @@
   <body>
    <table>
     <thead>
+      <th>isbn</th>
       <th>Title</th>
       <th>Author</th>
       <th>Genre</th>
@@ -22,6 +23,7 @@
     </thead>
     @foreach ($books as $book)
     <tbody>
+      <td>{{$book->isbn}}</td>
       <td>{{$book->title}}</td>
       <td>{{$book->author}}</td>
       <td>{{$book->genre}}</td>

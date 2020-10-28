@@ -10,14 +10,29 @@
     <title>laravel-base-crud</title>
   </head>
   <body>
-    <ul>
-     <li>{{}}</li>
-     <li>{{}}</li>
-     <li>{{}}</li>
-     <li>{{}}</li>
-     <li>{{}}</li>
-     <li>{{}}</li>
-     <li>{{}}</li>
-    </ul>
+    <table>
+     <thead>
+       <th>isbn</th>
+       <th>Title</th>
+       <th>Author</th>
+       <th>Genre</th>
+       <th>Edition</th>
+       <th>Description</th>
+       <th>Pages</th>
+       <th>Year</th>
+     </thead>
+     @foreach ($books as $book)
+     <tbody>
+       <td>{{$book->isbn}}</td>
+       <td>{{$book->title}}</td>
+       <td>{{$book->author}}</td>
+       <td>{{$book->genre}}</td>
+       <td>{{$book->edition}}</td>
+       <td>{{$book->description}}</td>
+       <td>{{$book->pages}}</td>
+       <td>{{$book->year}}</td>
+     </tbody>
+     @endforeach
+    </table>
   </body>
 </html>

@@ -39,6 +39,7 @@ class BookController extends Controller
         $data = $request->all();
 
         $request->validate([
+          // "isbn" => "required|
           "title" => "reguired|max 30",
           "author" => "required|max 50",
           "genre" => "required|max 30",
@@ -46,20 +47,22 @@ class BookController extends Controller
           "description" => "required|max 3000",
           "pages" => "required",
           "year" => "required"
+
         ]);
 
         $book = new Book;
+        $book->isbn = $data["isbn"];
         $book->title = $data["title"];
         $book->author = $data["author"];
         $book->genre = $data["genre"];
         $book->edition = $data["edition"];
         $book->description = $data["description"];
         $book->pages = $data["pages"];
-        $book->date = $data["date"];
+        $book->year = $data["year"];
 
         $book->save();
-
-        return redirect()->route('books.show', $books);
+        dd($book);
+        return redirect()->route('books.show', $book);
     }
     /**
      * Display the specified resource.
@@ -96,6 +99,7 @@ class BookController extends Controller
       $data = $request->all();
 
       $request->validate([
+
         "title" => "reguired|max 30",
         "author" => "required|max 50",
         "genre" => "required|max 30",
@@ -103,6 +107,7 @@ class BookController extends Controller
         "description" => "required|max 3000",
         "pages" => "required",
         "year" => "required",
+
       ]);
     }
 
