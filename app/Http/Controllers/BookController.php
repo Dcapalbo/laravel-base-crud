@@ -38,6 +38,16 @@ class BookController extends Controller
     {
         $data = $request->all();
 
+        $request->validate([
+          "title" => "reguired|max 30",
+          "author" => "required|max 50",
+          "genre" => "required|max 30",
+          "edition" => "required|max 30",
+          "description" => "required|max 3000",
+          "pages" => "required",
+          "year" => "required"
+        ]);
+
         $book = new Book;
         $book->title = $data["title"];
         $book->author = $data["author"];
@@ -48,6 +58,8 @@ class BookController extends Controller
         $book->date = $data["date"];
 
         $book->save();
+
+        return redirect()->route('books.show', $books);
     }
     /**
      * Display the specified resource.
@@ -57,7 +69,8 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        //
+        $books = Book::find($id);
+        return view("show", compact("books"));
     }
 
     /**
@@ -66,9 +79,9 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Book $books)
     {
-        //
+        return view('edit', compact('books'));
     }
 
     /**
@@ -80,7 +93,17 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $data = $request->all();
+
+      $request->validate([
+        "title" => "reguired|max 30",
+        "author" => "required|max 50",
+        "genre" => "required|max 30",
+        "edition" => "required|max 30",
+        "description" => "required|max 3000",
+        "pages" => "required",
+        "year" => "required",
+      ]);
     }
 
     /**
