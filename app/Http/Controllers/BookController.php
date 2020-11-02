@@ -42,7 +42,7 @@ class BookController extends Controller
         $request->validate(
 
           [
-          "isbn" => "required|unique:books|size:13",
+          "isbn" => "required|max 13",
           "title" => "reguired|max 30",
           "author" => "required|max 50",
           "genre" => "required|max 30",
@@ -89,7 +89,7 @@ class BookController extends Controller
     public function edit($id)
     {
         $book = Book::find($id);
-        return view('edit', compact('books'));
+        return view('edit', compact('book'));
     }
 
     /**
@@ -129,7 +129,7 @@ class BookController extends Controller
       ]);
 
         $book->update();
-        return redirect()->route("books.update", $id);
+        return redirect()->route("books.show", $book);
     }
 
     /**
@@ -141,9 +141,7 @@ class BookController extends Controller
     public function destroy($id)
     {
       $book = Book::find($id);
-
       $book->delete();
-
       return redirect()->route("books.index");
     }
 }

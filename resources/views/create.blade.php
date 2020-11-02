@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="public/app.css">
-    <title>laravel-base-crud</title>
+    <link rel="stylesheet" href="{{asset('/css/app.css')}}">
+    <title>Create</title>
   </head>
   <body>
+    <h1>Create</h1>
     <form action="{{route('books.store')}}" method="POST">
       @csrf
       @method('POST')
@@ -48,5 +49,15 @@
       </div>
       <input type="submit" value="Save">
     </form>
+
+    @if ($errors->any())
+     <div class="alert alert-danger">
+      <ul>
+      @foreach ($errors->all() as $error)
+       <li>{{ $error }}</li>
+      @endforeach
+      </ul>
+     </div>
+    @endif
   </body>
 </html>

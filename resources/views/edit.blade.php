@@ -6,15 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="public/app.css">
-    <title>laravel-base-crud</title>
+    <link rel="stylesheet" href="{{asset('/css/app.css')}}">
+    <title></title>
   </head>
   <body>
-    <form action="{{route('books.update', $book->$id)}}" method="POST">
+    <h1>Modify</h1>    
+    <form action="{{route('books.update', $book)}}" method="POST">
       @csrf
       @method('PUT')
-
-
       <div class="">
         <label for="isbn">ISBN</label>
         <input type="number" name="isbn" placeholder="ISBN" id="isbn" value="{{$book->isbn}}">
@@ -39,7 +38,7 @@
         <label for="description">Description</label>
         <input type="text" name="description" placeholder="description" id="description" value="{{$book->description}}">
       </div>
-      <div class="">
+      <div class=""> 
         <label for="pages">Pages</label>
         <input type="number" name="pages" placeholder="number of pages" id="pages" value="{{$book->pages}}">
       </div>
@@ -47,13 +46,23 @@
         <label for="year">Date</label>
         <input type="date" name="date" placeholder="date" id="year" value="{{$book->year}}">
       </div>
-      <input type="submit" value="Save">
+      <input type="submit" value="Modify">
     </form>
-    <form action="{{route("books.destroy", $book->id)}}" method="POST">
+    <form action="{{route('books.destroy', $book)}}" method="POST">
       @csrf
       @method("DELETE")
+      <br>
+      <input type="submit" value="Delete">
+      </form>
+    @if ($errors->any())
+     <div class="alert alert-danger">
+      <ul>
+      @foreach ($errors->all() as $error)
+       <li>{{ $error }}</li>
+      @endforeach
+      </ul>
+     </div>
+    @endif
 
-      <input type="submit" value="delete">
-    </form>
   </body>
 </html>
